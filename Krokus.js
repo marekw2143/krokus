@@ -7,14 +7,14 @@ include("scripts/simple.js");
 include("scripts/WidgetFactory.js");
 
 function DO_LOG(text){
-  qDebug( toLog );
+  qDebug( text );
   EAction.handleUserMessage(text);
 };
 
 function CLOG(prefix){
   return function(text){
     qDebug( text );
-//    DO_LOG("Krokus::" + prefix + ": " + text);
+    DO_LOG("Krokus::" + prefix + ": " + text);
   };
 }
 
@@ -25,11 +25,11 @@ function Krokus(guiAction) {
   var dbg = CLOG("Constructor");
 
   var path = "/home/marek/opt/qcad-3.28.2-trial-linux-qt5.14-x86_64/scripts/Misc/Krokus/Krokus.ui";
-  dbg("init called, path: " + path);
+  dbg("path: " + path);
 
   this.setUiOptions(path);
 
-  dbg("init setUiOptions called");
+  dbg("setUiOptions called");
 };
 Krokus.prototype = new EAction();
 Krokus.includeBasePath = includeBasePath;
@@ -41,32 +41,30 @@ Krokus.prototype.getProperties = function(){
   var doc = EAction.getDocument();
 
 
-  /* var appWin = EAction.getMainWindow();
+  var appWin = EAction.getMainWindow();
   var path = "/home/marek/opt/qcad-3.28.2-trial-linux-qt5.14-x86_64/scripts/Misc/Krokus";
-   this.dialog = WidgetFactory.createDialog(path, "Krokus.ui", appWin);
-   WidgetFactory.restoreState(this.dialog);
-   var widgets = getWidgets(this.dialog);
+  this.dialog = WidgetFactory.createDialog(path, "Krokus.ui", appWin);
+  WidgetFactory.restoreState(this.dialog);
+  var widgets = getWidgets(this.dialog);
 
   this.dialog.exec();
-  WidgetFactory.saveState( this.dialog );*/
+  WidgetFactory.saveState( this.dialog );
 
 }
 
 Krokus.prototype.beginEvent = function() {
-  var dbg = CLOG("beginEvent);
+  var dbg = CLOG("beginEvent");
   dbg("start");
 
   EAction.prototype.beginEvent.call(this);
+
+  debugger;
   this.getProperties();
   
 
-  debugger;
 
-
-	// create a document:
 	var doc = EAction.getDocument();
 
-	// add something to the document:
 	startTransaction(doc);
 
   for(var i = 0; i < 100; i += 12){
