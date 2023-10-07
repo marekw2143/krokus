@@ -1,62 +1,66 @@
 
 include("scripts/EAction.js");
 include("scripts/File/File.js");
-include("scripts/EAction.js");
 include("scripts/Tools/arguments.js");
 include("scripts/sprintf.js");
 include("scripts/simple.js");
 include("scripts/WidgetFactory.js");
 
-function dbg(text){
-  var toLog = "Krokus::" + text;
+function DO_LOG(text){
   qDebug( toLog );
+  EAction.handleUserMessage(text);
 };
 
 function CLOG(prefix){
   return function(text){
-    dbg(prefix + " " + text);
-  }
+    qDebug( text );
+//    DO_LOG("Krokus::" + prefix + ": " + text);
+  };
 }
 
 
 function Krokus(guiAction) {
   EAction.call(this, guiAction);
 
-  dbg("init called");
-var path = "/home/marek/opt/qcad-3.28.2-trial-linux-qt5.14-x86_64/scripts/Misc/Krokus/Krokus.ui";
+  var dbg = CLOG("Constructor");
+
+  var path = "/home/marek/opt/qcad-3.28.2-trial-linux-qt5.14-x86_64/scripts/Misc/Krokus/Krokus.ui";
+  dbg("init called, path: " + path);
+
   this.setUiOptions(path);
+
   dbg("init setUiOptions called");
 };
 Krokus.prototype = new EAction();
 Krokus.includeBasePath = includeBasePath;
 
-Krokus.prototype = new EAction();
 Krokus.prototype.getProperties = function(){ 
-    var dbg = CLOG("getProperties");
-    dbg("getProperties called");
+  var dbg = CLOG("getProperties");
+  dbg("method start");
 
-    var doc = EAction.getDocument();
-    var layerNames = doc.getLayerNames();
+  var doc = EAction.getDocument();
 
-    var appWin = EAction.getMainWindow();
 
-dbg("aa");
-//    this.dialog = WidgetFactory.createDialog( Krokus.includeBasePath, "Krokus.ui", appWin);
-dbg("bb");
+  /* var appWin = EAction.getMainWindow();
+  var path = "/home/marek/opt/qcad-3.28.2-trial-linux-qt5.14-x86_64/scripts/Misc/Krokus";
+   this.dialog = WidgetFactory.createDialog(path, "Krokus.ui", appWin);
+   WidgetFactory.restoreState(this.dialog);
+   var widgets = getWidgets(this.dialog);
 
- //   WidgetFactory.restoreState(this.dialog);
-  //  var widgets = getWidgets(this.dialog);
-   // this.dialog.exec();
-//WidgetFactory.saveState( this.dialog);
+  this.dialog.exec();
+  WidgetFactory.saveState( this.dialog );*/
+
 }
 
 Krokus.prototype.beginEvent = function() {
-  qDebug("Krokus - entering beginEvent");
+  var dbg = CLOG("beginEvent);
+  dbg("start");
 
   EAction.prototype.beginEvent.call(this);
   this.getProperties();
   
-  EAction.handleUserMessage("rysowanie linii!");
+
+  debugger;
 
 
 	// create a document:
