@@ -1,34 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Krokus</class>
- <widget class="QWidget" name="ExMyMinimal">
-  <layout class="QHBoxLayout">
+ <widget class="QDialog" name="Krokus">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>660</width>
+    <height>562</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Shaper Origin Exporter</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
-    <widget class="QLabel" name="RadiusLabel">
-     <property name="text">
-      <string>&amp;Length:</string>
+    <widget class="QGroupBox" name="layerBox">
+     <property name="enabled">
+      <bool>true</bool>
      </property>
-     <property name="buddy">
-      <cstring>IFDISJIOFS</cstring>
+     <property name="title">
+      <string>Layer Configuration</string>
      </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="RMathLineEdit" name="Radius">
-     <property name="text">
-      <string notr="true">13</string>
-     </property>
+     <layout class="QFormLayout" name="formLayout2">
+      <item row="0" column="0">
+       <widget class="QLabel" name="InteriorCutsLayerLabel">
+        <property name="text">
+         <string>Interior Cuts Layer:</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
     </widget>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>RMathLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>RMathLineEdit.h</header>
+   <class>RMathComboBox</class>
+   <extends>QWidget</extends>
+   <header>rmathcombobox.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+
+ </tabstops>
  <resources/>
- <connections/>
+ <connections>
+ </connections>
 </ui>

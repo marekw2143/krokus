@@ -40,9 +40,9 @@ Krokus.prototype.getProperties = function(){
 
   dialog.show();
   //dialog.exec();
-  while(true)
-  {
-  };
+  //while(true)
+  //{
+  //};
 //  WidgetFactory.saveState( this.dialog );
 
 }
