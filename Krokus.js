@@ -4,7 +4,7 @@ include("scripts/Tools/arguments.js");
 include("scripts/sprintf.js");
 include("scripts/simple.js");
 include("scripts/WidgetFactory.js");
-
+include("scripts/File/File.js");
 function DO_LOG(text){
   qDebug( text );
   EAction.handleUserMessage( text );
@@ -34,14 +34,17 @@ Krokus.prototype.slotLiczbaPlikowChanged = function( v )
   this.writeFiles( filesNumber );
 };
 
-Krokus.prototype.slotWykonajAkcjeClicked = function(v)
-{
-  CLOG("WykonajAkcje")("clicked ");
-};
-
 Krokus.prototype.slotWykonajAkcje = function(v)
 {
-  CLOG("WykonajAkcje")("changed ");
+  var logger = CLOG("WykonajAkcje");
+
+  logger("start");
+
+  var di = EAction.getDocumentInterface();
+  var name = "fajnyPlik1";
+  var version = "";
+  var fileName = di.getCorrectedFileName(name, version);
+  di.exportFile(name, version);
 };
 
 
