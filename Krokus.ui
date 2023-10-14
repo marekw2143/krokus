@@ -6,36 +6,35 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>660</width>
-    <height>562</height>
+    <width>500</width>
+    <height>30</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Shaper Origin Exporter</string>
-  </property>
-  <property name="modal">
-   <bool>true</bool>
+   <string>Krokus 1</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
-   <item>
-    <widget class="QGroupBox" name="layerBox">
-     <property name="enabled">
-      <bool>true</bool>
-     </property>
-     <property name="title">
-      <string>Layer Configuration</string>
-     </property>
-     <layout class="QFormLayout" name="formLayout2">
-      <item row="0" column="0">
-       <widget class="QLabel" name="InteriorCutsLayerLabel">
-        <property name="text">
-         <string>Interior Cuts Layer:</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+    <item>
+    <widget class="QLabel" name="InteriorCutsLayerLabel">
+    <property name="text">
+        <string>Liczba plikow</string>
+    </property>
     </widget>
-   </item>
+    </item>
+    <item>
+        <widget class="RMathLineEdit" name="LiczbaPlikow">
+            <property name="text">
+                <string notr="true">1</string>
+            </property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QPushButton" name="WykonajAkcje">
+        <property name="text">
+            <string notr="true">Dodaj</string>
+        </property>
+    </widget>
+    </item>
   </layout>
  </widget>
  <customwidgets>
@@ -46,7 +45,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-
  </tabstops>
  <resources/>
  <connections>

@@ -1,4 +1,3 @@
-
 include("scripts/EAction.js");
 include("scripts/File/File.js");
 include("scripts/Tools/arguments.js");
@@ -8,7 +7,7 @@ include("scripts/WidgetFactory.js");
 
 function DO_LOG(text){
   qDebug( text );
-  EAction.handleUserMessage(text);
+  EAction.handleUserMessage( text );
 };
 
 function CLOG(prefix){
@@ -22,51 +21,53 @@ Krokus.includeBasePath = includeBasePath;
 
 function Krokus(guiAction) {
   EAction.call(this, guiAction);
+  this.setUiOptions("Krokus.ui");
+  this.filesNumber = undefined;
 };
 
-Krokus.prototype.getProperties = function(){ 
-  var dbg = CLOG("getProperties");
-  dbg("method start");
+Krokus.prototype.slotLiczbaPlikowChanged = function( v )
+{
+  CLOG("eventWrapper")("called with " + v);
 
-  var doc = EAction.getDocument();
+  this.filesNumber = new Number(v);
+
+  this.writeFiles( filesNumber );
+};
+
+Krokus.prototype.slotWykonajAkcjeClicked = function(v)
+{
+  CLOG("WykonajAkcje")("clicked ");
+};
+
+Krokus.prototype.slotWykonajAkcje = function(v)
+{
+  CLOG("WykonajAkcje")("changed ");
+};
 
 
-  var appWin = EAction.getMainWindow();
-
-  var dialog = WidgetFactory.createDialog(Krokus.includeBasePath, "Krokus.ui", appWin);
-
-/*  VWidgetFactory.restoreState(this.dialog);
-  var widgets = getWidgets(this.dialog);*/
-
-  dialog.show();
-  //dialog.exec();
-  //while(true)
-  //{
-  //};
-//  WidgetFactory.saveState( this.dialog );
+Krokus.prototype.writeFiles(filesNumber) = function(filesNumber) {
 
 }
-
 Krokus.prototype.beginEvent = function() {
   var dbg = CLOG("beginEvent");
   dbg("start");
 
-  EAction.prototype.beginEvent.call(this);
+  // EAction.prototype.beginEvent.call(this);
 
-  debugger;
-  this.getProperties();
+  // debugger;
+  // this.getProperties();
   
 
 
-	var doc = EAction.getDocument();
+	// var doc = EAction.getDocument();
 
-	startTransaction(doc);
+	// startTransaction(doc);
 
-  for(var i = 0; i < 100; i += 12){
-    var x = 100 + i;
-    var y = 100 - i;
-	  addLine(0,0, x, y);
-  }
-	endTransaction();
+  // for(var i = 0; i < 100; i += 12){
+  //   var x = 100 + i;
+  //   var y = 100 - i;
+	//   addLine(0,0, x, y);
+  // }
+	// endTransaction();
 };
 

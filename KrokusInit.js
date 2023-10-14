@@ -1,5 +1,5 @@
 function init(basePath) {
-    var action = new RGuiAction(qsTr("&Nowa fajna akcja"), RMainWindowQt.getMainWindow());
+    var action = new RGuiAction(qsTr("&Stwórz pliki"), RMainWindowQt.getMainWindow());
     action.setRequiresDocument(true);
     action.setScriptFile( basePath + "/Krokus.js");
     action.setGroupSortOrder(100000);
