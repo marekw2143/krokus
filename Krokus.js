@@ -6,12 +6,14 @@ include("scripts/simple.js");
 include("scripts/WidgetFactory.js");
 include("scripts/File/File.js");
 
-function DO_LOG(text){
-  qDebug( text );
-  EAction.handleUserMessage( text );
-};
+
 
 function CLOG(prefix){
+  function DO_LOG(text){
+    qDebug( text );
+    EAction.handleUserMessage( text );
+  };
+  
   return function(text){
     DO_LOG("Krokus::" + prefix + ": " + text);
   };
@@ -47,37 +49,36 @@ Krokus.prototype.slotWykonajAkcje = function(v)
   logger("start");
   // debugger;
   var extension = "dxf";
-  var version = "";
+  var version = "2010";
   var di = EAction.getDocumentInterface();
 
-  for(var i=0; i < this.filesNumber; i++)
+  for(var currentFileNumber = 1; currentFileNumber <= this.filesNumber; currentFileNumber++)
   {
-    var name = this.fileNamePattern + i + "." + extension;
+    var name = this.fileNamePattern + "_" + currentFileNumber + "." + extension;
 
     var fileName = di.getCorrectedFileName(name, version);
 
     var doc = createOffScreenDocument();
     
-    this.draw(doc, i);
-
+    this.draw(doc, currentFileNumber);
 
     // export the document to a DXF file:
-    var di = new RDocumentInterface(doc);
+    var newFileDi = new RDocumentInterface(doc);
 
     logger("saving file: " + fileName);
-    di.exportFile(fileName);
+    newFileDi.exportFile(fileName);
   }
 };
 
-Krokus.prototype.draw = function(doc, i)
+Krokus.prototype.draw = function(doc, fileNumber)
 {
   var logger = CLOG("Draw");
 
-  logger("start, file number: " + i);
+  logger("start, file number: " + fileNumber);
 
   startTransaction(doc);
 
-  this.doDraw( i );
+  this.doDraw( fileNumber );
 
   endTransaction();
 };
