@@ -39,12 +39,15 @@ Krokus.prototype.slotWykonajAkcje = function(v)
   var logger = CLOG("WykonajAkcje");
 
   logger("start");
-
+  // debugger;
   var di = EAction.getDocumentInterface();
-  var name = "fajnyPlik1";
+  var name = "fajnyPlik1.dxf";
   var version = "";
   var fileName = di.getCorrectedFileName(name, version);
-  di.exportFile(name, version);
+
+  logger("File name: " + fileName);
+  
+  di.exportFile(fileName, version);
 };
 
 
