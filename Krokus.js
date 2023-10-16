@@ -53,16 +53,32 @@ Krokus.prototype.slotWykonajAkcje = function(v)
   {
     var name = this.fileNamePattern + i + "." + extension;
 
-    var x = 100 + i;
-    var y = 100 - i;
-    addLine(0,0, x, y);
-
     var fileName = di.getCorrectedFileName(name, version);
 
-    logger("File name: " + fileName);
+    var doc = createOffScreenDocument();
+    startTransaction(doc);
+    this.draw(doc, i);
+    endTransaction();
+    // export the document to a DXF file:
+    var di = new RDocumentInterface(doc);
 
-    di.exportFile(fileName, version);
+    logger("saving file: " + fileName);
+    di.exportFile(fileName);
   }
+};
+
+Krokus.prototype.draw = function(doc, i)
+{
+  var logger = CLOG("Draw");
+
+  logger("start, file number: " + i);
+
+
+// add something to the document:
+  var x = 100 + i;
+  var y = 100 - i;
+
+  addLine(0,0, x, y);
 };
 
 
