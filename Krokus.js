@@ -30,9 +30,14 @@ Krokus.prototype.slotLiczbaPlikowChanged = function( v )
   CLOG("eventWrapper")("called with " + v);
 
   this.filesNumber = new Number(v);
-
-  this.writeFiles( filesNumber );
 };
+
+Krokus.prototype.slotFileNamePatternChanged = function( v )
+{
+  CLOG("fileNameChanged")("set to: " + v);
+
+  this.fileNamePattern = v;
+}
 
 Krokus.prototype.slotWykonajAkcje = function(v)
 {
@@ -40,14 +45,24 @@ Krokus.prototype.slotWykonajAkcje = function(v)
 
   logger("start");
   // debugger;
-  var di = EAction.getDocumentInterface();
-  var name = "fajnyPlik1.dxf";
+  var extension = "dxf";
   var version = "";
-  var fileName = di.getCorrectedFileName(name, version);
+  var di = EAction.getDocumentInterface();
 
-  logger("File name: " + fileName);
-  
-  di.exportFile(fileName, version);
+  for(var i=0; i < this.filesNumber; i++)
+  {
+    var name = this.fileNamePattern + i + "." + extension;
+
+    var x = 100 + i;
+    var y = 100 - i;
+    addLine(0,0, x, y);
+
+    var fileName = di.getCorrectedFileName(name, version);
+
+    logger("File name: " + fileName);
+
+    di.exportFile(fileName, version);
+  }
 };
 
 

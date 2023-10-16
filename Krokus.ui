@@ -15,16 +15,30 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-    <widget class="QLabel" name="InteriorCutsLayerLabel">
-    <property name="text">
-        <string>Liczba plikow</string>
-    </property>
-    </widget>
+        <widget class="QLabel" name="InteriorCutsLayerLabel">
+        <property name="text">
+            <string>Liczba plikow</string>
+        </property>
+        </widget>
     </item>
     <item>
         <widget class="RMathLineEdit" name="LiczbaPlikow">
             <property name="text">
                 <string notr="true">1</string>
+            </property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QLabel" name="temp1">
+        <property name="text">
+            <string>Nazwa plików:</string>
+        </property>
+        </widget>
+    </item>
+    <item>
+        <widget class="QLineEdit" name="FileNamePattern">
+            <property name="text">
+                <string>plik_wyjsciowy</string>
             </property>
         </widget>
     </item>
