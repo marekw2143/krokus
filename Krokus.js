@@ -48,13 +48,13 @@ Krokus.prototype.slotFileNamePatternChanged = function( v )
 
 Krokus.prototype.slotWykonajAkcje = function(v)
 {
-  var logger = CLOG("WykonajAkcje");
+    var logger = CLOG("WykonajAkcje");
 
-  logger("start");
-  // debugger;
-  var extension = "dxf";
-  var version = "2010";
-  var di = EAction.getDocumentInterface();
+    logger("start");
+    // debugger;
+    var extension = "dxf";
+    var version = "2010";
+    var di = EAction.getDocumentInterface();
 
     for(var currentFileNumber = 1; currentFileNumber <= this.filesNumber; currentFileNumber++)
     {
