@@ -91,11 +91,6 @@ Krokus.prototype.doDraw = function( drawingNumber )
   addLine(drawingNumber,drawingNumber, x, y);
 }
 
-Krokus.prototype.writeFiles(filesNumber) = function(filesNumber) {
-
-}
 Krokus.prototype.beginEvent = function() {
-  var dbg = CLOG("beginEvent");
-  dbg("start");
 };
 
