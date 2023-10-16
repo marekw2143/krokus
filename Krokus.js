@@ -95,7 +95,8 @@ Krokus.prototype.doDraw = function( drawingNumber )
     addLine(drawingNumber,drawingNumber, x, y);
 }
 
-Krokus.prototype.beginEvent = function() {
+Krokus.prototype.beginEvent = function() 
+{
     var logger = CLOG("beginEvent");
 
     logger("wywołano");
